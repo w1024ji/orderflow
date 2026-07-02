@@ -2,10 +2,9 @@ import asyncio
 import aiohttp
 import websockets
 import json
-from collections import OrderedDict
 
 SYMBOL = "btcusdt"
-SNAPSHOT_URL = f"https://api.binance.com/api/v3/depth?symbol=BTCUSDT&limit=1000"
+SNAPSHOT_URL = "https://api.binance.com/api/v3/depth?symbol=BTCUSDT&limit=1000"
 WS_URL = f"wss://stream.binance.com:9443/ws/{SYMBOL}@depth"
 
 class OrderBook:

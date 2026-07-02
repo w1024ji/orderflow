@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: producer
-          image: ghcr.io/w1024ji/orderflow-producer:latest
+          image: ghcr.io/w1024ji/orderflow-producer:fd0b5a17dfc30a1fd8fe462e248c588d2643a05e
           imagePullPolicy: Always
           env:
             - name: PYTHONUNBUFFERED

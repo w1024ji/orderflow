@@ -15,8 +15,8 @@ spec:
     spec:
       containers:
         - name: producer
-          image: orderflow-producer:latest
-          imagePullPolicy: Never  # minikube 로컬 이미지 사용
+          image: ghcr.io/w1024ji/orderflow-producer:latest
+          imagePullPolicy: Always
           env:
             - name: PYTHONUNBUFFERED
               value: "1"

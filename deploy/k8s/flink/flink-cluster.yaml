@@ -4,7 +4,7 @@ metadata:
   name: orderflow-flink
   namespace: data-pipeline
 spec:
-  image: ghcr.io/w1024ji/orderflow-flink-job:latest
+  image: ghcr.io/w1024ji/orderflow-flink-job:93156fa0e62460a1ec687f8b7a9451a6051847aa
   flinkVersion: v1_18
   flinkConfiguration:
     taskmanager.numberOfTaskSlots: "2"

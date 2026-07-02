@@ -1,0 +1,53 @@
+apiVersion: flink.apache.org/v1beta1
+kind: FlinkDeployment
+metadata:
+  name: orderflow-flink
+  namespace: data-pipeline
+spec:
+  image: flink:1.18
+  flinkVersion: v1_18
+  flinkConfiguration:
+    taskmanager.numberOfTaskSlots: "2"
+    state.checkpoints.dir: file:///tmp/checkpoints
+    s3.endpoint: https://s3.us-east-1.amazonaws.com
+    s3.path.style.access: "false"
+  serviceAccount: flink
+  jobManager:
+    resource:
+      memory: "1024m"
+      cpu: 0.5
+  taskManager:
+    resource:
+      memory: "1024m"
+      cpu: 0.5
+  podTemplate:
+    spec:
+      volumes:
+        - name: flink-jar
+          hostPath:
+            path: /orderflow
+            type: Directory
+      containers:
+        - name: flink-main-container
+          volumeMounts:
+            - name: flink-jar
+              mountPath: /orderflow
+          env:
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: aws-credentials
+                  key: access-key-id
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: aws-credentials
+                  key: secret-access-key
+            - name: AWS_DEFAULT_REGION
+              value: "us-east-1"
+            - name: ENABLE_BUILT_IN_PLUGINS
+              value: "flink-s3-fs-hadoop-1.18.1.jar"
+  job:
+    jarURI: local:///orderflow/flink-job/target/flink-job-1.0-SNAPSHOT.jar
+    parallelism: 1
+    upgradeMode: stateless

@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: orderflow-producer
+  namespace: data-pipeline
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: orderflow-producer
+  template:
+    metadata:
+      labels:
+        app: orderflow-producer
+    spec:
+      containers:
+        - name: producer
+          image: orderflow-producer:latest
+          imagePullPolicy: Never  # minikube 로컬 이미지 사용
+          env:
+            - name: PYTHONUNBUFFERED
+              value: "1"

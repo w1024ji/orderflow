@@ -1,0 +1,18 @@
+{
+  "type": "record",
+  "name": "OrderBookEvent",
+  "namespace": "com.orderflow",
+  "fields": [
+    {"name": "symbol",          "type": "string"},
+    {"name": "event_time",      "type": "long"},
+    {"name": "last_update_id",  "type": "long"},
+    {"name": "bids",            "type": {"type": "array", "items": {
+      "type": "record", "name": "PriceLevel",
+      "fields": [
+        {"name": "price",    "type": "string"},
+        {"name": "quantity", "type": "string"}
+      ]
+    }}},
+    {"name": "asks", "type": {"type": "array", "items": "PriceLevel"}}
+  ]
+}

@@ -1,0 +1,5 @@
+websockets
+aiohttp
+fastavro
+requests
+confluent-kafka

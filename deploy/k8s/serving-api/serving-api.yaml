@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: orderflow-serving-api
+  namespace: data-pipeline
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: orderflow-serving-api
+  template:
+    metadata:
+      labels:
+        app: orderflow-serving-api
+    spec:
+      containers:
+        - name: serving-api
+          image: orderflow-serving-api:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: orderflow-serving-api
+  namespace: data-pipeline
+spec:
+  selector:
+    app: orderflow-serving-api
+  ports:
+    - port: 8000
+      targetPort: 8000
+  type: ClusterIP

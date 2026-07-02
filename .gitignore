@@ -1,0 +1,45 @@
+# Java / Maven (flink-job)
+target/
+*.class
+*.jar
+!*-sources.jar
+
+# Python (producer)
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Node (frontend, serving-api)
+node_modules/
+dist/
+build/
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfvars
+!*.tfvars.example
+
+# 시크릿 / 환경변수 (절대 커밋 금지)
+.env
+.env.*
+*.pem
+*.key
+*credentials*
+!**/aws-credentials.example
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# 로그
+*.log
+
+# minikube/k8s 로컬 산출물
+*.kubeconfig

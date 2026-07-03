@@ -28,6 +28,7 @@ build/
 *.pem
 *.key
 *credentials*
+!deploy/k8s/secrets/aws-credentials-sealed.yaml
 !**/aws-credentials.example
 
 # IDE
@@ -43,3 +44,10 @@ Thumbs.db
 
 # minikube/k8s 로컬 산출물
 *.kubeconfig
+
+temp-secret.yaml
+*-secret-raw.yaml
+
+*.tar.gz
+kubeseal
+

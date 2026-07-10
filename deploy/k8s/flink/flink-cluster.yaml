@@ -14,11 +14,11 @@ spec:
   serviceAccount: flink
   jobManager:
     resource:
-      memory: "768m" # 1024m에서 512m 으로 바꿀까? 고민중
+      memory: "1024m" # 1024m에서 768m 로 바꾸기 실패. 다시 1024m로 돌아감
       cpu: 0.5
   taskManager:
     resource:
-      memory: "768m" # 1024m에서 512m 으로 바꿀까? 고민중
+      memory: "1024m" # 마찬가지
       cpu: 0.5
   podTemplate:
     spec:

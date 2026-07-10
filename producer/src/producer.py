@@ -12,15 +12,10 @@ import os
 SYMBOL = "btcusdt"
 SNAPSHOT_URL = "https://api.binance.com/api/v3/depth?symbol=BTCUSDT&limit=1000"
 WS_URL = f"wss://stream.binance.com:9443/ws/{SYMBOL}@depth"
-# SCHEMA_REGISTRY_URL = "http://localhost:8081"
-# KAFKA_BROKER = "kafka.data-pipeline.svc.cluster.local:9092"
-# KAFKA_BROKER = "localhost:9092"
 SCHEMA_REGISTRY_URL = "http://schema-registry.data-pipeline.svc.cluster.local:8081"
 KAFKA_BROKER = "kafka.data-pipeline.svc.cluster.local:9092"
 TOPIC = "orderbook.raw"
 
-# BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-# SCHEMA_PATH = os.path.join(BASE_DIR, "schemas", "orderbook.avsc")
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SCHEMA_PATH = os.path.join(BASE_DIR, "schemas", "orderbook.avsc")
 
